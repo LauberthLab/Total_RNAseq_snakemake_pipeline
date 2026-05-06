@@ -1,0 +1,96 @@
+#  
+# Snakemake
+#  
+.snakemake/
+.snakemake.log
+*.snakemake.log
+
+#  
+# Pipeline outputs (regenerable; don't commit)
+#  
+results/
+logs/
+benchmarks/
+data/
+fastq/
+trimmed/
+bams/
+counts/
+
+#  
+# Conda / virtualenv
+#  
+.conda/
+envs/.installed/
+.venv/
+venv/
+env/
+
+#  
+# Python
+#  
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+#  
+# R
+#  
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+*.Rproj.user/
+*.Rproj
+.Rcheck/
+*-Ex.R
+
+#  
+# Bioinformatics intermediates (in case something escapes results/)
+#  
+*.bam
+*.bai
+*.sam
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bed
+*.bedGraph
+*.bigWig
+*.bw
+*.vcf
+*.vcf.gz
+*.tbi
+
+#  
+# HPC / SLURM
+#  
+slurm-*.out
+*.sbatch.log
+
+# 
+# Editors / OS
+# 
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+#  
+# Local overrides — keep these out of git, but COMMIT the templates
+#  
+config/local.yaml
+config/*.local.tsv
+profiles/*/local-*.yaml

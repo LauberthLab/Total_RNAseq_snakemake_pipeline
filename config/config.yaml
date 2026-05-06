@@ -1,0 +1,76 @@
+# =====================================================================
+# RNA-seq Snakemake workflow — main configuration
+# =====================================================================
+
+# Sample metadata 
+# TSV with header: sample  rep  condition  time
+#   sample      : unique sample id (must match FASTQ basename, see fastq_dir)
+#   rep         : biological/technical replicate id (e.g. 1, 2, 3)
+#   condition   : sample type / treatment (e.g. DMSO, ISD, shCTRL)
+#   time        : time point (e.g. 6, 28). Use "NA" if not applicable.
+samples: "config/samples.tsv"
+
+# Pairwise comparisons for DESeq2.
+# TSV with header: name  group_col  numerator  denominator  subset_col  subset_val
+#   name        : label for the contrast (used in output filenames)
+#   group_col   : column of samples.tsv used as the design grouping
+#                 (typically "condition")
+#   numerator   : level tested vs. denominator
+#   denominator : reference level
+#   subset_col  : (optional) column to subset on before fitting; "" = no subset
+#   subset_val  : (optional) value of subset_col to keep
+contrasts: "config/contrasts.tsv"
+
+#  Library layout 
+# "PE" for paired-end, "SE" for single-end.
+library_type: "PE"
+
+# Directory containing raw FASTQ files.
+# Expected naming:
+#   PE: {sample}_R1_001.fastq.gz and {sample}_R2_001.fastq.gz
+#   SE: {sample}_R1_001.fastq.gz
+# Override the suffix below if your files use a different convention.
+fastq_dir: "data/fastq"
+fastq_suffix_r1: "_R1_001.fastq.gz"
+fastq_suffix_r2: "_R2_001.fastq.gz"
+
+#  References 
+# HISAT2 index prefix (the path you would pass to `hisat2 -x`).
+hisat2_index: "/projects/b1042/LauberthLab/Collaborations/SS_RNA_PRPS/scripts/hg38/genome"
+
+# GTF annotation used by featureCounts.
+gtf: "/projects/p32170/Genome/gencode.v45.annotation.gtf"
+
+#  Tool parameters 
+trim_galore:
+  quality: 30
+  adapter: "--illumina"        # set to "" to auto-detect
+  extra: ""
+
+hisat2:
+  strandness: "RF"             # RF, FR, or "" for unstranded
+  extra: ""
+
+samtools:
+  min_mapq: 10
+
+featurecounts:
+  feature_type: "exon"
+  attribute: "gene_name"   # use gene_id for gene-level
+  strandness: 2                # 0 unstranded, 1 stranded, 2 reverse-stranded
+  extra: ""
+
+deseq2:
+  min_cpm: 0.3
+  min_samples_above_cpm: 2
+  padj_cutoff: 0.05
+  log2fc_cutoff: 0.5849
+  top_labels: 10               # top up/down genes labelled in volcano
+
+#  Resources 
+threads:
+  fastqc: 30 
+  trim: 30
+  align: 50
+  sort: 30
+  featurecounts: 12
