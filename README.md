@@ -70,7 +70,7 @@ Tab-separated, header required:
 |-----------------------|-----|-----------|------|
 | 21161R-74-01_S33_L005 | 1   | DMSO      | 6    |
 | 21161R-74-02_S34_L005 | 2   | DMSO      | 6    |
-| 21161R-74-03_S35_L005 | 1   | ISD       | 6    |
+| 21161R-74-03_S35_L005 | 1   | Drug       | 6    |
 | ...                   | ... | ...       | NA   |
 
 - `sample` must match the FASTQ basename (without the suffix).
