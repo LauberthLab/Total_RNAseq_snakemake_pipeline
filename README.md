@@ -1,5 +1,7 @@
 # Total RNA-seq Snakemake Workflow
 
+Snakemake v7.32.4 and Python==3.11.15 were used for constructing this workflow
+
 End-to-end, reproducible RNA-seq pipeline driven by a metadata sheet.
 
 ```
