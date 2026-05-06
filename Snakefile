@@ -1,6 +1,6 @@
-# =====================================================================
+# 
 # RNA-seq Snakemake workflow
-# =====================================================================
+# 
 # Steps: FastQC -> TrimGalore -> HISAT2 -> samtools sort/index ->
 #        featureCounts -> process_fc -> DESeq2 (PCA, DEGs, volcanoes) ->
 #        MultiQC
@@ -9,7 +9,7 @@
 #   snakemake --use-conda --cores 32
 # Dry run:
 #   snakemake -n
-# =====================================================================
+# 
 
 import os
 import re

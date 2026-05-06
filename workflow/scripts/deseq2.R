@@ -1,11 +1,11 @@
 #!/usr/bin/env Rscript
-# =====================================================================
+# 
 # DESeq2 analysis driver
-# =====================================================================
+   
 # Two subcommands:
 #   pca       — global PCA across all samples
 #   contrast  — pairwise DE + volcano for one contrast row of contrasts.tsv
-# =====================================================================
+ 
 
 suppressPackageStartupMessages({
   library(optparse)
@@ -15,9 +15,9 @@ suppressPackageStartupMessages({
   library(EnhancedVolcano)
 })
 
-# ---------------------------------------------------------------------
+
 # Shared helpers
-# ---------------------------------------------------------------------
+
 read_counts <- function(path) {
   counts <- read.delim(path, check.names = FALSE)
   colnames(counts) <- gsub("^X", "", colnames(counts))
@@ -52,9 +52,9 @@ align_counts_meta <- function(counts, meta) {
        meta   = meta[shared, , drop = FALSE])
 }
 
-# ---------------------------------------------------------------------
+
 # PCA subcommand
-# ---------------------------------------------------------------------
+
 run_pca <- function(args) {
   counts <- read_counts(args$counts)
   meta   <- read_meta(args$meta)
@@ -93,9 +93,9 @@ run_pca <- function(args) {
   message("Wrote ", args$`out-pdf`)
 }
 
-# ---------------------------------------------------------------------
+
 # Contrast subcommand
-# ---------------------------------------------------------------------
+
 run_contrast <- function(args) {
   counts    <- read_counts(args$counts)
   meta      <- read_meta(args$meta)
@@ -160,7 +160,7 @@ run_contrast <- function(args) {
   message(sprintf("Significant: %d (padj<=%.3g, |log2FC|>=%.3f)",
                   nrow(sig), args$padj, args$log2fc))
 
-  # ----- Volcano -----
+  #  Volcano 
   res_plot <- res_df[!is.na(res_df$padj), ]
   up   <- sig[sig$log2FoldChange > 0, ]
   down <- sig[sig$log2FoldChange < 0, ]
@@ -202,9 +202,9 @@ run_contrast <- function(args) {
   message("Wrote ", args$`out-volcano`)
 }
 
-# ---------------------------------------------------------------------
+# 
 # CLI
-# ---------------------------------------------------------------------
+# 
 parse_args_for <- function(sub) {
   opts <- list(
     make_option("--counts", type = "character"),

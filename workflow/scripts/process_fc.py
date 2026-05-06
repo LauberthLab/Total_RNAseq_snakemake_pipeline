@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Tidy a featureCounts output file.
+"""Tidy up a featureCounts output file.
 
 - Drops Chr/Start/End/Strand columns.
 - Renames sample columns from BAM paths to clean sample ids
