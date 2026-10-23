@@ -18,7 +18,7 @@ if PAIRED:
             extra=config["trim_galore"]["extra"],
             outdir="results/trimmed",
         conda:
-             "../envs/tools.yaml"
+             "../envs/trim.yaml"
         shell:
             r"""
             trim_galore -j {threads} {params.adapter} --paired \
@@ -44,7 +44,7 @@ else:
             extra=config["trim_galore"]["extra"],
             outdir="results/trimmed",
         conda:
-            "../envs/tools.yaml"
+            "../envs/trim.yaml"
         shell:
             r"""
             trim_galore -j {threads} {params.adapter} \
