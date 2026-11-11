@@ -1,6 +1,5 @@
-# =====================================================================
 # RNA-seq Snakemake workflow — main configuration
-# =====================================================================
+# 
 
 # Sample metadata 
 # TSV with header: sample  rep  condition  time
@@ -36,10 +35,10 @@ fastq_suffix_r2: "_R2_001.fastq.gz"
 
 #  References 
 # HISAT2 index prefix (the path you would pass to `hisat2 -x`).
-hisat2_index: "/projects/b1042/LauberthLab/Collaborations/SS_RNA_PRPS/scripts/hg38/genome"
+hisat2_index: "/path/to/hg38/genome"
 
 # GTF annotation used by featureCounts.
-gtf: "/projects/p32170/Genome/gencode.v45.annotation.gtf"
+gtf: "/path/to/Genome/gencode.v45.annotation.gtf"
 
 #  Tool parameters 
 trim_galore:
