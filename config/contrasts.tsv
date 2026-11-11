@@ -1,4 +1,4 @@
 name	group_col	numerator	denominator	subset_col	subset_val
-ISD_vs_DMSO_6h	condition	ISD	DMSO	time	6
-ISD_vs_DMSO_28h	condition	ISD	DMSO	time	28
-ISD_vs_DMSO_all	condition	ISD	DMSO		
+Drug_vs_DMSO_6h	condition	Drug	DMSO	time	6
+Drug_vs_DMSO_28h	condition	Drug	DMSO	time	28
+Drug_vs_DMSO_all	condition	Drug	DMSO		
